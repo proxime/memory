@@ -1,0 +1,26 @@
+{
+    "extends": "./tsconfig.paths",
+    "compilerOptions": {
+        "jsx": "react-jsx",
+        "strict": true,
+        "baseUrl": ".",
+        "allowJs": false,
+        "outDir": "dist",
+        "sourceMap": true,
+        "module": "esnext",
+        "target": "es2015",
+        "skipLibCheck": true,
+        "isolatedModules": true,
+        "lib": ["ES6", "DOM"],
+        "noImplicitAny": true,
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "importsNotUsedAsValues": "preserve",
+        "allowSyntheticDefaultImports": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "noFallthroughCasesInSwitch": true,
+        "inlineSources": true
+    },
+    "exclude": ["node_modules", "public", "webpack", "config", "coverage"]
+}
