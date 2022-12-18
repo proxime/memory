@@ -50,6 +50,7 @@ export class Board {
         const boardElement = document.getElementById('board');
         if (!boardElement)
             throw new Error('element with id "board" does not exists');
+        boardElement.innerHTML = '';
 
         let index = 0;
         for (const value of this.board) {
@@ -143,12 +144,6 @@ export class Board {
             this.gameInProgress = false;
             this.board = [];
             gameInfo.endGame();
-
-            const boardElement = document.getElementById('board');
-            if (!boardElement)
-                throw new Error('element with id "board" does not exists');
-
-            boardElement.innerHTML = '';
         }
     }
 

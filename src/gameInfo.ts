@@ -15,6 +15,8 @@ export class GameInfo {
     private levelElement;
     private roundsPlayedElement;
     private speedButtons;
+    private modalspeedButtons;
+    private modalLevelButtons;
 
     constructor() {
         const movesElement = document.getElementById('moves') as HTMLDivElement;
@@ -25,29 +27,64 @@ export class GameInfo {
         const speedButtons = document.querySelectorAll<HTMLButtonElement>(
             '.game-table__button',
         );
+        const modalspeedButtons = document.querySelectorAll<HTMLButtonElement>(
+            '.modal__speed-button',
+        );
+        const modalLevelButtons = document.querySelectorAll<HTMLButtonElement>(
+            '.modal__level-button',
+        );
 
         this.movesElement = movesElement;
         this.levelElement = levelElement;
         this.roundsPlayedElement = roundsPlayedElement;
         this.speedButtons = speedButtons;
+        this.modalspeedButtons = modalspeedButtons;
+        this.modalLevelButtons = modalLevelButtons;
 
-        speedButtons.forEach((button) =>
+        [...modalspeedButtons, ...speedButtons].forEach((button) =>
             button.addEventListener('click', () =>
                 this.changeSpeed(button.value as speedType, button),
+            ),
+        );
+        modalLevelButtons.forEach((button) =>
+            button.addEventListener('click', () =>
+                this.changeLevel(Number(button.value) as levelType, button),
             ),
         );
     }
 
     changeSpeed(speed: speedType, element: HTMLButtonElement) {
+        if (element.classList.contains('modal__settings-button--active'))
+            return;
+        this.modalspeedButtons.forEach((button) =>
+            button.classList.remove('modal__settings-button--active'),
+        );
+        [...this.modalspeedButtons]
+            .find((button) => button.value === speed)
+            ?.classList.add('modal__settings-button--active');
+
         if (element.classList.contains('game-table__button--active')) return;
         this.speedButtons.forEach((button) =>
             button.classList.remove('game-table__button--active'),
         );
-        element.classList.add('game-table__button--active');
+        [...this.speedButtons]
+            .find((button) => button.value === speed)
+            ?.classList.add('game-table__button--active');
 
         if (speed === 'fast') return (this.speed = 500);
         if (speed === 'slow') return (this.speed = 3000);
         return (this.speed = 1000);
+    }
+
+    changeLevel(level: levelType, element: HTMLButtonElement) {
+        if (element.classList.contains('modal__settings-button--active'))
+            return;
+        this.modalLevelButtons.forEach((button) =>
+            button.classList.remove('modal__settings-button--active'),
+        );
+        element.classList.add('modal__settings-button--active');
+
+        this.level = level;
     }
 
     getSpeed() {

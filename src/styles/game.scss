@@ -71,6 +71,12 @@
   }
 
   &--completed &__inner {
-    display: none;
+    pointer-events: none;
+    transform: rotateY(180deg);
+  }
+
+  &--completed &__front {
+    background-color: gray;
+    opacity: 0.2;
   }
 }
