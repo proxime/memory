@@ -1,0 +1,39 @@
+.game-table {
+  display: flex;
+  gap: 48px;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 16px;
+  text-align: center;
+  border-bottom: 1px solid #d4cdcd;
+
+  &__option-name {
+    font-size: 14px;
+    color: gray;
+  }
+
+  &__option-value {
+    font-size: 32px;
+  }
+
+  &__button {
+    padding: 8px 24px;
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid gray;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: #e7f8ff;
+    }
+
+    &--active {
+      color: white;
+      background-color: #00b3ff;
+
+      &:hover {
+        background-color: #2abfff;
+      }
+    }
+  }
+}

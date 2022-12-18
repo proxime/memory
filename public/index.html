@@ -1,28 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Meta Tags -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <title>Memory</title>
+    </head>
 
-    <!-- Favicon -->
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <body>
+        <!-- No script message -->
+        <noscript>
+            This website will not work without JavaScript, please enable
+            JavaScript to view.
+        </noscript>
+        <!-- No script message end -->
 
-    <!-- Title -->
-    <title>Snake game</title>
-  </head>
+        <!-- Root -->
+        <div id="root" class="root">
+            <div class="modal-wrapper">
+                <div class="modal">
+                    <div class="modal__inner">
+                        <div class="modal__title">Memory</div>
+                        <div class="modal__settings">
+                            <div class="modal__settings-name">Poziom</div>
+                            <div class="modal__settings-buttons">
+                                <button
+                                    class="modal__settings-button"
+                                    value="3"
+                                >
+                                    3
+                                </button>
+                                <button
+                                    class="modal__settings-button modal__settings-button--active"
+                                    value="5"
+                                >
+                                    5
+                                </button>
+                                <button
+                                    class="modal__settings-button"
+                                    value="8"
+                                >
+                                    8
+                                </button>
+                                <button
+                                    class="modal__settings-button"
+                                    value="10"
+                                >
+                                    10
+                                </button>
+                                <button
+                                    class="modal__settings-button"
+                                    value="15"
+                                >
+                                    15
+                                </button>
+                            </div>
+                        </div>
+                        <div class="modal__settings">
+                            <div class="modal__settings-name">Szybkość</div>
+                            <div class="modal__settings-buttons">
+                                <button
+                                    class="modal__settings-button"
+                                    value="fast"
+                                >
+                                    szybko
+                                </button>
+                                <button
+                                    class="modal__settings-button modal__settings-button--active"
+                                    value="medium"
+                                >
+                                    średnio
+                                </button>
+                                <button
+                                    class="modal__settings-button"
+                                    value="slow"
+                                >
+                                    wolno
+                                </button>
+                            </div>
+                        </div>
+                        <div class="modal__button-wrapper">
+                            <button id="start-button">Rozpocznij grę</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-  <body>
-    <!-- No script message -->
-    <noscript>
-      This website will not work without JavaScript, please enable JavaScript to view.
-    </noscript>
-    <!-- No script message end -->
-
-    <!-- Root -->
-    <div id="root" class="root"></div>
-    <!-- Root end -->
-  </body>
+            <div class="game-table">
+                <div class="game-table__option">
+                    <div class="game-table__option-value" id="moves"></div>
+                    <div class="game-table__option-name">ruchy</div>
+                </div>
+                <div class="game-table__option">
+                    <div class="game-table__option-value" id="level"></div>
+                    <div class="game-table__option-name">poziom</div>
+                </div>
+                <div class="game-table__option">
+                    <div
+                        class="game-table__option-value"
+                        id="rounds-played"
+                    ></div>
+                    <div class="game-table__option-name">zagrane rundy</div>
+                </div>
+                <div class="game-table__option">
+                    <div class="game-table__option-value">
+                        <button class="game-table__button" value="fast">
+                            szybko
+                        </button>
+                        <button
+                            class="game-table__button game-table__button--active"
+                            value="medium"
+                        >
+                            średnio
+                        </button>
+                        <button class="game-table__button" value="slow">
+                            wolno
+                        </button>
+                    </div>
+                    <div class="game-table__option-name">szybkość</div>
+                </div>
+            </div>
+            <div id="board"></div>
+        </div>
+        <!-- Root end -->
+    </body>
 </html>

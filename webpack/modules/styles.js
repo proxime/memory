@@ -11,3 +11,13 @@ export const css = {
     ],
     exclude: /node_modules/,
 };
+
+export const sass = {
+    test: /\.(s(a|c)ss)$/,
+    use: [
+        config.IS_DEV ? 'style-loader' : MiniCssExtractPlugin.loader,
+        'css-loader',
+        'sass-loader',
+    ],
+    exclude: /node_modules/,
+};

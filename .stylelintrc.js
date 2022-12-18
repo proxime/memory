@@ -1,13 +1,13 @@
 module.exports = {
-  extends: ['stylelint-config-standard', 'stylelint-config-recess-order'],
-  rules: {
-    'selector-max-id': 0,
-    'string-quotes': 'single',
-    'at-rule-no-unknown': [
-      true,
-      {
-        ignoreAtRules: ['mixin', 'mixin-content', 'define-mixin'],
-      },
+    plugins: ['stylelint-scss'],
+    extends: [
+        'stylelint-config-standard-scss',
+        'stylelint-config-recess-order',
     ],
-  },
+    rules: {
+        'at-rule-no-unknown': null,
+        'scss/at-rule-no-unknown': true,
+        'color-function-notation': "legacy",
+        'scss/no-global-function-names': null,
+    },
 };
