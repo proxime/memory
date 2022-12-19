@@ -1,18 +1,18 @@
-import bananaImg from '../assets/banana.png';
-import blackBerryDarkImg from '../assets/black-berry-dark.png';
-import blackCherryImg from '../assets/black-cherry.png';
-import greenGrapeImg from '../assets/green-grape.png';
-import lemonImg from '../assets/lemon.png';
-import limeImg from '../assets/lime.png';
-import orangeImg from '../assets/orange.png';
-import peachImg from '../assets/peach.png';
-import pearImg from '../assets/pear.png';
-import plumImg from '../assets/plum.png';
-import raspberryImg from '../assets/raspberry.png';
-import redAppleImg from '../assets/red-apple.png';
-import redCherryImg from '../assets/red-cherry.png';
-import strawberryImg from '../assets/strawberry.png';
-import watermelonImg from '../assets/watermelon.png';
+import bananaImg from '../assets/images/banana.png';
+import blackBerryDarkImg from '../assets/images/black-berry-dark.png';
+import blackCherryImg from '../assets/images/black-cherry.png';
+import greenGrapeImg from '../assets/images/green-grape.png';
+import lemonImg from '../assets/images/lemon.png';
+import limeImg from '../assets/images/lime.png';
+import orangeImg from '../assets/images/orange.png';
+import peachImg from '../assets/images/peach.png';
+import pearImg from '../assets/images/pear.png';
+import plumImg from '../assets/images/plum.png';
+import raspberryImg from '../assets/images/raspberry.png';
+import redAppleImg from '../assets/images/red-apple.png';
+import redCherryImg from '../assets/images/red-cherry.png';
+import strawberryImg from '../assets/images/strawberry.png';
+import watermelonImg from '../assets/images/watermelon.png';
 
 export const gameIcons = [
     {

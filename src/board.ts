@@ -1,6 +1,13 @@
+import { confetti } from './confetti';
 import { gameInfo } from './gameInfo';
 import { getRandomInt } from './helpers/getRandomInt';
 import { gameIcons } from './shared/gameIcons';
+
+const audioGood = document.getElementById('audio-good') as HTMLAudioElement;
+const audioBad = document.getElementById('audio-bad') as HTMLAudioElement;
+const audioCongratulations = document.getElementById(
+    'audio-congratulations',
+) as HTMLAudioElement;
 
 export type GameItemType = {
     completed: boolean;
@@ -100,15 +107,18 @@ export class Board {
             return;
         }
 
+        const isValidCard =
+            this.board[this.currentCardIndex].id === this.board[index].id;
+
+        if (isValidCard) audioGood.play();
+        else audioBad.play();
+
         await new Promise((resolve) =>
             setTimeout(() => {
                 if (!this.board || this.currentCardIndex === undefined) return;
 
                 // check if both cards are the same
-                if (
-                    this.board[this.currentCardIndex].id ===
-                    this.board[index].id
-                ) {
+                if (isValidCard) {
                     this.currentCardElement?.classList.remove(
                         'game-card--active',
                     );
@@ -143,6 +153,8 @@ export class Board {
         if (completedCards?.length === gameInfo.getLevel() * 2) {
             this.gameInProgress = false;
             this.board = [];
+            audioCongratulations.play();
+            confetti.play();
             gameInfo.endGame();
         }
     }
