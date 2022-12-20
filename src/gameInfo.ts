@@ -4,10 +4,41 @@ const gameModal = document.querySelector('.modal-wrapper');
 
 export type speedType = 'fast' | 'medium' | 'slow';
 
-export type levelType = 3 | 5 | 8 | 10 | 15;
-
 export class GameInfo {
-    private level: levelType = 5;
+    static levels = [
+        {
+            value: 0,
+            name: '3x2',
+            pairs: 3,
+        },
+        {
+            value: 1,
+            name: '4x3',
+            pairs: 6,
+        },
+        {
+            value: 2,
+            name: '4x4',
+            pairs: 8,
+        },
+        {
+            value: 3,
+            name: '5x4',
+            pairs: 10,
+        },
+        {
+            value: 4,
+            name: '6x4',
+            pairs: 12,
+        },
+        {
+            value: 5,
+            name: '6x5',
+            pairs: 15,
+        },
+    ];
+
+    private level = 1;
     private moves = 0;
     private roundsPlayed = 0;
     private speed = 1000;
@@ -48,7 +79,7 @@ export class GameInfo {
         );
         modalLevelButtons.forEach((button) =>
             button.addEventListener('click', () =>
-                this.changeLevel(Number(button.value) as levelType, button),
+                this.changeLevel(Number(button.value), button),
             ),
         );
     }
@@ -76,15 +107,14 @@ export class GameInfo {
         return (this.speed = 1000);
     }
 
-    changeLevel(level: levelType, element: HTMLButtonElement) {
-        if (element.classList.contains('modal__settings-button--active'))
-            return;
+    changeLevel(level: number, element: HTMLButtonElement) {
+        if (level === this.level) return;
+
+        this.level = level;
         this.modalLevelButtons.forEach((button) =>
             button.classList.remove('modal__settings-button--active'),
         );
         element.classList.add('modal__settings-button--active');
-
-        this.level = level;
     }
 
     getSpeed() {
@@ -102,7 +132,7 @@ export class GameInfo {
 
     renderInfo() {
         this.movesElement.textContent = this.moves.toString();
-        this.levelElement.textContent = this.level.toString();
+        this.levelElement.textContent = GameInfo.levels[this.level]?.name;
         this.roundsPlayedElement.textContent = this.roundsPlayed.toString();
     }
 

@@ -1,5 +1,5 @@
 import { confetti } from './confetti';
-import { gameInfo } from './gameInfo';
+import { GameInfo, gameInfo } from './gameInfo';
 import { getRandomInt } from './helpers/getRandomInt';
 import { gameIcons } from './shared/gameIcons';
 
@@ -22,19 +22,22 @@ export class Board {
     private currentCardElement?: HTMLDivElement;
     private tourInProgress = false;
     private gameInProgress = false;
+    private pairs = 1;
 
     createBoard() {
         this.gameInProgress = true;
         const level = gameInfo.getLevel();
+        this.pairs = GameInfo.levels[level]?.pairs;
+        if (!this.pairs) throw new Error('Invalid level');
 
         const gameItems = gameIcons
             .sort(() => Math.random() - Math.random())
-            .slice(0, level);
+            .slice(0, this.pairs);
 
         const board: GameItemType[] = [];
-        for (let i = 0; i < level * 2; i++) {
+        for (let i = 0; i < this.pairs * 2; i++) {
             const setGameItem = (): GameItemType => {
-                const imageIndex = getRandomInt(0, level - 1);
+                const imageIndex = getRandomInt(0, this.pairs - 1);
                 const image = gameItems[imageIndex];
                 if (
                     !(board.filter((item) => item.id === image.id).length > 1)
@@ -58,6 +61,7 @@ export class Board {
         if (!boardElement)
             throw new Error('element with id "board" does not exists');
         boardElement.innerHTML = '';
+        boardElement.className = `board--${gameInfo.getLevel()}`;
 
         let index = 0;
         for (const value of this.board) {
@@ -110,6 +114,11 @@ export class Board {
         const isValidCard =
             this.board[this.currentCardIndex].id === this.board[index].id;
 
+        audioGood.currentTime = 0;
+        audioGood.pause();
+        audioBad.currentTime = 0;
+        audioBad.pause();
+
         if (isValidCard) audioGood.play();
         else audioBad.play();
 
@@ -150,7 +159,7 @@ export class Board {
 
     checkGameStatus() {
         const completedCards = this.board?.filter((item) => item.completed);
-        if (completedCards?.length === gameInfo.getLevel() * 2) {
+        if (completedCards?.length === this.pairs * 2) {
             this.gameInProgress = false;
             this.board = [];
             audioCongratulations.play();

@@ -6,13 +6,13 @@ import lemonImg from '../assets/images/lemon.png';
 import limeImg from '../assets/images/lime.png';
 import orangeImg from '../assets/images/orange.png';
 import peachImg from '../assets/images/peach.png';
-import pearImg from '../assets/images/pear.png';
 import plumImg from '../assets/images/plum.png';
 import raspberryImg from '../assets/images/raspberry.png';
 import redAppleImg from '../assets/images/red-apple.png';
 import redCherryImg from '../assets/images/red-cherry.png';
 import strawberryImg from '../assets/images/strawberry.png';
 import watermelonImg from '../assets/images/watermelon.png';
+import redGgrapeImg from '../assets/images/red-grape.png';
 
 export const gameIcons = [
     {
@@ -57,8 +57,8 @@ export const gameIcons = [
     },
     {
         id: 8,
-        name: 'pear',
-        img: pearImg,
+        name: 'redGgrape',
+        img: redGgrapeImg,
     },
     {
         id: 9,

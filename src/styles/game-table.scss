@@ -1,11 +1,16 @@
 .game-table {
   display: flex;
-  gap: 48px;
+  flex-wrap: wrap;
+  column-gap: 48px;
   align-items: flex-end;
   justify-content: center;
   padding: 16px;
   text-align: center;
   border-bottom: 1px solid #d4cdcd;
+
+  @media (max-width: 900px) {
+    padding: 16px 8px;
+  }
 
   &__option-name {
     font-size: 14px;

@@ -1,21 +1,59 @@
 #board {
-  display: flex;
-  flex-wrap: wrap;
-  row-gap: 8px;
-  column-gap: 16px;
+  display: grid;
+  gap: 4px;
   align-content: center;
-  min-height: 100%;
-  padding: 24px;
+  align-items: center;
+  min-height: calc(100vh - 94px);
+  padding: 16px;
+  margin: 0 auto;
+
+  @media (max-width: 900px) {
+    align-content: flex-start;
+    align-items: flex-start;
+    padding: 16px 4px;
+  }
 
   @include flex-center;
+}
+
+.board {
+  &--0 {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 700px;
+  }
+
+  &--1 {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 900px;
+  }
+
+  &--2 {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 900px;
+  }
+
+  &--3 {
+    grid-template-columns: repeat(5, 1fr);
+    max-width: 900px;
+  }
+
+  &--4 {
+    grid-template-columns: repeat(6, 1fr);
+    max-width: 1000px;
+  }
+
+  &--5 {
+    grid-template-columns: repeat(6, 1fr);
+    max-width: 1000px;
+  }
 }
 
 .game-card {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 200px;
-  height: 300px;
+  width: 100%;
+  aspect-ratio: 10 / 7;
   perspective: 1000px;
 
   &__inner {
@@ -38,6 +76,10 @@
     border: 2px solid black;
     border-radius: 8px;
     backface-visibility: hidden;
+
+    @media (max-width: 900px) {
+      border-width: 1px;
+    }
   }
 
   &__front {
@@ -46,7 +88,7 @@
     @include flex-center;
 
     img {
-      width: 55%;
+      width: 40%;
     }
   }
 
@@ -57,13 +99,17 @@
   }
 
   &__back-image {
-    width: 80%;
-    height: 86%;
+    width: 85%;
+    height: 85%;
     background-image: url("../assets/images/back.jpg");
     background-position: center;
     background-size: cover;
     border: 2px solid black;
     border-radius: 8px;
+
+    @media (max-width: 900px) {
+      border-width: 1px;
+    }
   }
 
   &--active &__inner {
